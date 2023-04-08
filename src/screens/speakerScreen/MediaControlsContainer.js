@@ -2,7 +2,8 @@ import { useMeeting, Constants } from "@videosdk.live/react-sdk";
 import React, { useMemo } from "react";
 
 const MediaControlsContainer = () => {
-  const { toggleMic, toggleWebcam, startHls, stopHls, hlsState } = useMeeting();
+  const { toggleMic, toggleWebcam, startHls, stopHls, hlsState, meetingId } =
+    useMeeting();
 
   const { isHlsStarted, isHlsStopped, isHlsPlayable } = useMemo(
     () => ({
@@ -17,12 +18,13 @@ const MediaControlsContainer = () => {
     if (isHlsStarted) {
       stopHls();
     } else if (isHlsStopped) {
-      startHls();
+      startHls({ quality: "high" });
     }
   };
 
   return (
     <div>
+      <p>MeetingId: {meetingId}</p>
       <p>HLS state: {hlsState}</p>
       {isHlsPlayable && <p>Viewers will now be able to watch the stream.</p>}
       <button onClick={toggleMic}>Toggle Mic</button>

@@ -1,4 +1,4 @@
-export const authToken = "";
+export const authToken = "temporary-generated-auth-token-goes-here";
 
 export const createNewRoom = async () => {
   const res = await fetch(`https://api.videosdk.live/v2/rooms`, {

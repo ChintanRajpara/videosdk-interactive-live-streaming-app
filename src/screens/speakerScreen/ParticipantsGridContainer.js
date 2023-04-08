@@ -13,7 +13,9 @@ const ParticipantsGridContainer = () => {
   return (
     <div>
       {participantIds.map((participantId) => (
-        <SingleParticipantContainer {...{ participantId }} />
+        <SingleParticipantContainer
+          {...{ participantId, key: participantId }}
+        />
       ))}
     </div>
   );
